@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import json
+from os.path import join
 from pathlib import Path
 
-local_config = json.load(open('config.json', 'r'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+local_config = json.load(open(join(BASE_DIR, 'ccsu_bbs', 'config.json'), 'r'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app_user',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'app_user.Member'  # 设置用户模型
 ROOT_URLCONF = 'ccsu_bbs.urls'
 
 TEMPLATES = [
@@ -119,3 +121,19 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = join(BASE_DIR, STATIC_URL)
+STATICFILES_DIRS = (join(BASE_DIR, 'static'), )
+MEDIA_URL = '/media/'
+MEDIA_ROOT = join(BASE_DIR, 'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = local_config['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = local_config['EMAIL_HOST_PASSWORD']
+EMAIL_FROM = local_config['EMAIL_FROM']
+
+# 验证码过期时间为十分钟
+EMAIL_EXP_DELTA = 600
