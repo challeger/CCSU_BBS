@@ -7,7 +7,16 @@ from django.db import models
 from shortuuidfield import ShortUUIDField
 
 
+def _user_directory_path(instance, filename):
+    now_date = datetime.now().strftime('%Y%m%d')  # 当天日期
+    filename = '{}.{}'.format(uuid4().hex[:12], 'jpg')  # 随机生成文件名
+    return path.join('user', 'head', now_date, filename)  # 返回生成的文件名
+
+
 class MemberManager(BaseUserManager):
+    """
+    用户模型的自定义管理类
+    """
     def _create_user(self, username, password, nickname, email, **kwargs):
         user = self.model(username=username, password=password,
                           nickname=nickname, email=email, **kwargs)
@@ -30,13 +39,10 @@ class MemberGender(models.IntegerChoices):
     SECRET = 2, '保密'
 
 
-def _user_directory_path(instance, filename):
-    now_date = datetime.now().strftime('%Y%m%d')  # 当天日期
-    filename = '{}.{}'.format(uuid4().hex[:12], 'jpg')  # 随机生成文件名
-    return path.join('user', 'head', now_date, filename)  # 返回生成的文件名
-
-
 class Member(AbstractBaseUser, PermissionsMixin):
+    """
+    自定义用户类
+    """
     uid = ShortUUIDField(primary_key=True)
     username = models.CharField('用户名', max_length=16, unique=True)
     email = models.EmailField('邮箱', blank=True)
@@ -62,25 +68,99 @@ class Member(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.nickname
 
-    def get_full_name(self):
-        return self.nickname
+    get_full_name = __str__
+    get_short_name = __str__
 
-    def get_short_name(self):
-        return self.nickname
+
+class Clazz(models.Model):
+    """
+    班级模型
+    学生与班级为一对多关系
+    一个班级只能有一个班长
+    """
+    name = models.CharField('班名', max_length=15)
+    monitor = models.OneToOneField(
+        'Student', verbose_name='班长', on_delete=models.SET_NULL,
+        null=True, db_constraint=False, related_name='manage_clazz')
+
+    class Meta:
+        verbose_name = verbose_name_plural = '班级'
+        db_table = 'clazz'
+
+
+class League(models.Model):
+    """
+    社团模型
+    用户与社团为多对多关系
+    一个社团只能有一个社长
+    """
+    name = models.CharField('社团名称', max_length=15, unique=True)
+    code = models.CharField('社团代码', max_length=10, unique=True)
+    desc = models.CharField('社团宣言', max_length=60)
+    president = models.OneToOneField(
+        'Member', verbose_name='社长', on_delete=models.SET_NULL,
+        null=True, db_constraint=False, related_name='my_manage_league')
+    members = models.ManyToManyField('Member', through='MemberWithLeagueShip',
+                                     related_name='leagues')
+
+    class Meta:
+        verbose_name = verbose_name_plural = '社团'
+        db_table = 'league'
+
+
+class MemberWithLeagueShip(models.Model):
+    """
+    用户与社团的多对多关系模型
+    """
+    date_joined = models.DateTimeField('加入时间', auto_now_add=True)
+    member = models.ForeignKey(
+        'Member', verbose_name='社团成员', on_delete=models.CASCADE,
+        db_constraint=False, related_name='league_ship')
+    league = models.ForeignKey(
+        'League', verbose_name='所属社团', on_delete=models.CASCADE,
+        db_constraint=False, related_name='member_ship')
+
+    class Meta:
+        verbose_name = verbose_name_plural = '用户&社团多对多表'
 
 
 class Student(models.Model):
+    """
+    学生模型, 用户模型的扩展身份
+    """
+    stu_id = models.CharField('学号', max_length=12, primary_key=True)
     member = models.OneToOneField('Member', on_delete=models.CASCADE, db_constraint=False)
-    # TODO 此处应有学生的班级, 社团等外键
+    clazz = models.ForeignKey('Clazz', on_delete=models.SET_NULL, null=True, db_constraint=False,
+                              related_name='students')
 
     class Meta:
         verbose_name = verbose_name_plural = '学生'
         db_table = 'student'
 
 
+class Course(models.Model):
+    """
+    课程模型, 与老师为多对多关系
+    这里就简单和老师联系,不和学生联系了.
+    """
+    name = models.CharField('课程名称', max_length=20, unique=True)
+    code = models.CharField('课程代码', max_length=15, unique=True)
+    desc = models.CharField('课程简介', max_length=60)
+
+    class Meta:
+        verbose_name = verbose_name_plural = '课程'
+        db_table = 'course'
+
+
 class Teacher(models.Model):
+    """
+    老师模型, 用户模型的扩展身份
+    """
+    teacher_id = models.CharField('教职工号', max_length=12, primary_key=True)
+    title = models.CharField('职称', max_length=20, blank=True)
     member = models.OneToOneField('Member', on_delete=models.CASCADE, db_constraint=False)
-    # TODO 此处应有老师的教学科目, 任职等
+    teach_courses = models.ManyToManyField('Course', verbose_name='所教课程', db_constraint=False,
+                                           null=True, related_name='teachers')
 
     class Meta:
         verbose_name = verbose_name_plural = '老师'
