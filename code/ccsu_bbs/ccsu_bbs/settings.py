@@ -22,6 +22,7 @@ local_config = json.load(open(join(BASE_DIR, 'ccsu_bbs', 'config.json'), 'r', en
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = local_config['SECRET_KEY']
+JWT_KEY = local_config['JWT_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app_user.middleware.LoginMiddleware',  # 得放在AuthMiddleware后面,不然会被覆盖
 ]
 
 AUTH_USER_MODEL = 'app_user.Member'  # 设置用户模型
