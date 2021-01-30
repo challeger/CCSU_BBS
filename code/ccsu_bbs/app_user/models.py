@@ -1,10 +1,13 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from os import path
 from uuid import uuid4
 
+import jwt
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
 from shortuuidfield import ShortUUIDField
+
+from ccsu_bbs.settings import JWT_KEY
 
 
 def _user_directory_path(instance, filename):
@@ -70,6 +73,21 @@ class Member(AbstractBaseUser, PermissionsMixin):
 
     get_full_name = __str__
     get_short_name = __str__
+
+    @property
+    def token(self):
+        """
+        使用jwt加密生成一个token,返回
+        :return:
+        """
+        token = jwt.encode({
+            'exp': datetime.utcnow() + timedelta(days=1),
+            'iat': datetime.utcnow(),
+            'data': {
+                'username': self.username
+            }
+        }, JWT_KEY, algorithm='HS256')
+        return token.decode('utf-8')
 
 
 class Clazz(models.Model):
