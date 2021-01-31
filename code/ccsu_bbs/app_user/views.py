@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_POST, require_GET
+from django.views.decorators.csrf import csrf_exempt
 
 from utils.permission import is_login
 from .models import (
     Member, Student, Teacher
 )
-from ..utils.resp import *
+from utils.resp import *
 
 
+@csrf_exempt
 @require_POST
 def login(request):
     """
