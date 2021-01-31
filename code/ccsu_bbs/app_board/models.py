@@ -21,7 +21,7 @@ class Area(models.Model):
     icon = models.ImageField('分区图标', upload_to=_area_directory_path, default='board/area/default.png')
     managers = models.ManyToManyField(
         'app_user.Member', verbose_name='区务', db_constraint=False,
-        null=True, related_name='manage_areas')
+        blank=True, related_name='manage_areas')
 
     class Meta:
         verbose_name = verbose_name_plural = '分区'
@@ -39,7 +39,7 @@ class Board(models.Model):
         related_name='boards', db_constraint=False)
     managers = models.ManyToManyField(
         'app_user.Member', verbose_name='版务', db_constraint=False,
-        null=True, related_name='manage_boards')
+        blank=True, related_name='manage_boards')
 
     class Meta:
         verbose_name = verbose_name_plural = '板块'

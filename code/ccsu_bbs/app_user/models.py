@@ -27,11 +27,11 @@ class MemberManager(BaseUserManager):
         user.save()
         return user
 
-    def create_user(self, username, password, nickname, email, **kwargs):
+    def create_user(self, username, password, nickname, email='', **kwargs):
         kwargs['is_superuser'] = False
         return self._create_user(username, password, nickname, email, **kwargs)
 
-    def create_superuser(self, username, password, nickname, email, **kwargs):
+    def create_superuser(self, username, password, nickname, email='', **kwargs):
         kwargs['is_superuser'] = True
         return self._create_user(username, password, nickname, email, **kwargs)
 
@@ -178,7 +178,7 @@ class Teacher(models.Model):
     title = models.CharField('职称', max_length=20, blank=True)
     member = models.OneToOneField('Member', on_delete=models.CASCADE, db_constraint=False)
     teach_courses = models.ManyToManyField('Course', verbose_name='所教课程', db_constraint=False,
-                                           null=True, related_name='teachers')
+                                           blank=True, related_name='teachers')
 
     class Meta:
         verbose_name = verbose_name_plural = '老师'
