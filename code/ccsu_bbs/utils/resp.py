@@ -26,3 +26,10 @@ class AuthFailedResponse(JsonResponse):
         # 认证失败时code为-1
         data['code'] = -1
         super().__init__(data, status=400, **kwargs)
+
+
+class ValueErrorResponse(JsonResponse):
+    def __init__(self, data, **kwargs):
+        # 参数错误时code为-2
+        data['code'] = -2
+        super().__init__(data, status=400, **kwargs)
