@@ -48,7 +48,14 @@ def register(request):
     :param request:
     :return:
     """
-    pass
+    username = request.POST.get('username')
+    passwd = request.POST.get('passwd')
+    nickname = request.POST.get('nickname')
+    try:
+        Member.objects.create_user(username, passwd, nickname)
+    except ValueError as e:
+        return ValueErrorResponse({'msg': str(e)})
+    return SuccessResponse({'msg': f'注册用户 {nickname} 成功!'})
 
 
 @require_POST
