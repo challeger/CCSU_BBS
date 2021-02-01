@@ -21,6 +21,17 @@ class MemberManager(BaseUserManager):
     用户模型的自定义管理类
     """
     def _create_user(self, username, password, nickname, email, **kwargs):
+        # 一些验证
+        if not username:
+            raise ValueError('请输入用户名!')
+        if not password:
+            raise ValueError('请输入密码!')
+        if not nickname:
+            raise ValueError('请输入昵称!')
+        if self.model.objects.filter(username=username):
+            raise ValueError('用户名已存在!')
+        if self.model.objects.filter(nickname=nickname):
+            raise ValueError('昵称已存在!')
         user = self.model(username=username, password=password,
                           nickname=nickname, email=email, **kwargs)
         user.set_password(password)
