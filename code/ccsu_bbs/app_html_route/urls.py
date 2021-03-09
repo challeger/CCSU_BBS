@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 """
 @编写人: 小蓝同学
-@文件功能: 路由分发
+@文件功能: 
 每天都要开心:)
 """
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from app_user import views
 
-app_name = 'app_user'
+from app_html_route import views
+
+app_name = 'app_html_route'
 
 urlpatterns = [
-    path('api/login', views.login, name='api_login'),
-    path('api/register', views.register, name='api_register')
+    path('base/', TemplateView.as_view(template_name='base.html'), name='base'),
 ]
