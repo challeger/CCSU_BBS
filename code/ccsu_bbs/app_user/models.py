@@ -98,7 +98,7 @@ class Member(AbstractBaseUser, PermissionsMixin):
                 'username': self.username
             }
         }, JWT_KEY, algorithm='HS256')
-        return token.decode('utf-8')
+        return token
 
 
 class Clazz(models.Model):

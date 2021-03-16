@@ -3,18 +3,20 @@
 <html lang="zh-hans">
 
 <head>
-    <title>伴你长大</title>
+    <title>{% block title %}伴你长大{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Simplest is - Professional A unique and beautiful collection of UI elements">
-    <link rel="icon" href="assets/images/favicon.png">
+    <link rel="icon" href="/static/images/favicon.png">
 
     <!-- CSS
 ================================================== -->
     <link href="https://cdn.bootcdn.net/ajax/libs/uikit/3.2.2/css/uikit.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/button.css">
-
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{% static 'message/message.css' %}">
+    {% block css %}
+    {% endblock %}
     <!-- Google font
 ================================================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -33,7 +35,7 @@
         <div class="sidebar-header">
             <!-- Logo-->
             <div id="logo">
-                <a href="index.html"> <img src="assets/images/logo-light.png" alt=""></a>
+                <a href="index.html"> <img src="/static/images/logo-light.png" alt=""></a>
             </div>
             <span class="btn-close" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></span>
         </div>
@@ -194,8 +196,8 @@
 
                     <!-- Logo-->
                     <div id="logo">
-                        <a href="index.html"> <img src="assets/images/logo.png" alt=""></a>
-                        <a href="index.html"> <img src="assets/images/logo-light.png" class="logo-inverse" alt=""></a>
+                        <a href="index.html"> <img src="/static/images/logo.png" alt=""></a>
+                        <a href="index.html"> <img src="/static/images/logo-light.png" class="logo-inverse" alt=""></a>
                     </div>
 
                     <!-- form search-->
@@ -205,6 +207,7 @@
                                 <input value="" type="text" class="form-control" placeholder="搜点什么呢...."
                                        autocomplete="off">
                                 <i class="s_icon uil-search-alt"></i>
+
                             </div>
 
                             <!-- 搜索按钮 -->
@@ -214,23 +217,23 @@
                                 <ul class="dropdown-search-list">
                                     <li class="list-title"> 最近搜索</li>
                                     <li><a href="#">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <img src="/static/images/avatars/avatar-2.jpg" alt="">
                                         <p> Erica Jones <span> 2 hours ago </span></p>
                                     </a>
                                     </li>
                                     <li><a href="#">
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <img src="/static/images/avatars/avatar-3.jpg" alt="">
                                         <p> Adrian Mohani <span> 13 days ago </span></p>
                                     </a>
                                     </li>
                                     <li><a href="#">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                        <img src="/static/images/avatars/avatar-4.jpg" alt="">
                                         <p> Mountain Riders <span> 3 days ago <span>Group</span> </span>
                                         </p>
                                     </a>
                                     </li>
                                     <li><a href="#">
-                                        <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                                        <img src="/static/images/avatars/avatar-5.jpg" alt="">
                                         <p> Coffee Addicts <span> 12 days ago <span> Page</span></span></p>
                                     </a>
                                     </li>
@@ -244,984 +247,969 @@
 
                         </form>
                     </div>
-
-                    <!-- user icons -->
                     <div class="head_user">
-
-
-                        <!-- browse apps  -->
-                        <a href="#" class="opts_icon uk-visible@s" uk-tooltip="title: Create ; pos: bottom ;offset:7">
-                            <img src="assets/images/icons/apps.svg" alt="">
-                        </a>
-
-                        <!-- browse apps dropdown -->
-                        <div uk-dropdown="mode:click ; pos: bottom-center ; animation: uk-animation-scale-up"
-                             class="icon-browse display-hidden">
-                            <a href="#" class="icon-menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#9c27b0"
-                                          d="M12,8H4A2,2 0 0,0 2,10V14A2,2 0 0,0 4,16H5V20A1,1 0 0,0 6,21H8A1,1 0 0,0 9,20V16H12L17,20V4L12,8M21.5,12C21.5,13.71 20.54,15.26 19,16V8C20.53,8.75 21.5,10.3 21.5,12Z">
-                                    </path>
-                                </svg>
-                                Create Ad </a>
-                            <a href="#" class="icon-menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#009da0"
-                                          d="M18,20H6V18H4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V18H18V20M14,2H6A2,2 0 0,0 4,4V12H6V4H14V8H18V12H20V8L14,2M11,16H8V14H11V16M16,16H13V14H16V16M3,14H6V16H3V14M21,16H18V14H21V16Z">
-                                    </path>
-                                </svg>
-                                Create Blog </a>
-                            <a href="#" class="icon-menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#f25e4e"
-                                          d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z">
-                                    </path>
-                                </svg>
-                                Create Event </a>
-                            <a href="#" class="icon-menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#03A9F4"
-                                          d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z">
-                                    </path>
-                                </svg>
-                                Create Groups </a>
-                            <a href="#" class="icon-menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#f79f58" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z"></path>
-                                </svg>
-                                Create Page </a>
-                            <a href="#" class="icon-menu-item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#8bc34a"
-                                          d="M22,16V4A2,2 0 0,0 20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16M11,12L13.03,14.71L16,11L20,16H8M2,6V20A2,2 0 0,0 4,22H18V20H4V6">
-                                    </path>
-                                </svg>
-                                Albums </a>
-                            <a href="#" class="more-app"> More Apps</a>
-                        </div>
-
-
-                        <!-- Message  notificiation dropdown -->
-                        <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
-                            <img src="assets/images/icons/chat.svg" alt=""> <span>4</span>
-                        </a>
-
-                        <!-- Message  notificiation dropdown -->
-                        <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                             class="dropdown-notifications display-hidden">
-
-                            <!-- notification contents -->
-                            <div class="dropdown-notifications-content" data-simplebar>
-
-                                <!-- notivication header -->
-                                <div class="dropdown-notifications-headline">
-                                    <h4>Messages</h4>
-                                    <a href="#">
-                                        <i class="icon-feather-settings"
-                                           uk-tooltip="title: Message settings ; pos: left"></i>
-                                    </a>
+                        {% if request.is_login %}
+                            <div class="head_user">
+                                <!-- browse apps  -->
+                                <a href="#" class="opts_icon uk-visible@s"
+                                   uk-tooltip="title: Create ; pos: bottom ;offset:7">
+                                    <img src="/static/images/icons/apps.svg" alt="">
+                                </a>
+                                <!-- browse apps dropdown -->
+                                <div uk-dropdown="mode:click ; pos: bottom-center ; animation: uk-animation-scale-up"
+                                     class="icon-browse display-hidden">
+                                    <a href="#" class="icon-menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="#9c27b0"
+                                                  d="M12,8H4A2,2 0 0,0 2,10V14A2,2 0 0,0 4,16H5V20A1,1 0 0,0 6,21H8A1,1 0 0,0 9,20V16H12L17,20V4L12,8M21.5,12C21.5,13.71 20.54,15.26 19,16V8C20.53,8.75 21.5,10.3 21.5,12Z">
+                                            </path>
+                                        </svg>
+                                        Create Ad </a>
+                                    <a href="#" class="icon-menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="#009da0"
+                                                  d="M18,20H6V18H4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V18H18V20M14,2H6A2,2 0 0,0 4,4V12H6V4H14V8H18V12H20V8L14,2M11,16H8V14H11V16M16,16H13V14H16V16M3,14H6V16H3V14M21,16H18V14H21V16Z">
+                                            </path>
+                                        </svg>
+                                        Create Blog </a>
+                                    <a href="#" class="icon-menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="#f25e4e"
+                                                  d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z">
+                                            </path>
+                                        </svg>
+                                        Create Event </a>
+                                    <a href="#" class="icon-menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="#03A9F4"
+                                                  d="M12,6A3,3 0 0,0 9,9A3,3 0 0,0 12,12A3,3 0 0,0 15,9A3,3 0 0,0 12,6M6,8.17A2.5,2.5 0 0,0 3.5,10.67A2.5,2.5 0 0,0 6,13.17C6.88,13.17 7.65,12.71 8.09,12.03C7.42,11.18 7,10.15 7,9C7,8.8 7,8.6 7.04,8.4C6.72,8.25 6.37,8.17 6,8.17M18,8.17C17.63,8.17 17.28,8.25 16.96,8.4C17,8.6 17,8.8 17,9C17,10.15 16.58,11.18 15.91,12.03C16.35,12.71 17.12,13.17 18,13.17A2.5,2.5 0 0,0 20.5,10.67A2.5,2.5 0 0,0 18,8.17M12,14C10,14 6,15 6,17V19H18V17C18,15 14,14 12,14M4.67,14.97C3,15.26 1,16.04 1,17.33V19H4V17C4,16.22 4.29,15.53 4.67,14.97M19.33,14.97C19.71,15.53 20,16.22 20,17V19H23V17.33C23,16.04 21,15.26 19.33,14.97Z">
+                                            </path>
+                                        </svg>
+                                        Create Groups </a>
+                                    <a href="#" class="icon-menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="#f79f58"
+                                                  d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z"></path>
+                                        </svg>
+                                        Create Page </a>
+                                    <a href="#" class="icon-menu-item">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="#8bc34a"
+                                                  d="M22,16V4A2,2 0 0,0 20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16M11,12L13.03,14.71L16,11L20,16H8M2,6V20A2,2 0 0,0 4,22H18V20H4V6">
+                                            </path>
+                                        </svg>
+                                        Albums </a>
+                                    <a href="#" class="more-app"> More Apps</a>
                                 </div>
+                                <!-- Message dropdown -->
+                                <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
+                                    <img src="/static/images/icons/chat.svg" alt=""> <span>4</span>
+                                </a>
+                                <!-- Message dropdown -->
+                                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                                     class="dropdown-notifications display-hidden">
+                                    <div class="dropdown-notifications-content" data-simplebar>
+                                        <div class="dropdown-notifications-headline">
+                                            <h4>Messages</h4>
+                                            <a href="#">
+                                                <i class="icon-feather-settings"
+                                                   uk-tooltip="title: Message settings ; pos: left"></i>
+                                            </a>
+                                        </div>
 
-                                <!-- notiviation list -->
-                                <ul>
-                                    <li>
-                                        <a href="#">
+                                        <!-- notiviation list -->
+                                        <ul>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar status-online">
-                                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-2.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Jonathan Madano</strong>
-                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
-                                                </p>
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Jonathan Madano</strong>
+                                                        <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
+                                                        </p>
 
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-3.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Stella Johnson</strong>
-                                                <p> Alex will explain you how ... <span class="time-ago"> 3 h
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Stella Johnson</strong>
+                                                        <p> Alex will explain you how ... <span class="time-ago"> 3 h
                                                             </span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar status-online">
-                                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-1.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Alex Dolgove</strong>
-                                                <p> Alia just joined Messenger! <span class="time-ago"> 3 h
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Alex Dolgove</strong>
+                                                        <p> Alia just joined Messenger! <span class="time-ago"> 3 h
                                                             </span></p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar status-online">
-                                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-4.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Adrian Mohani</strong>
-                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Adrian Mohani</strong>
+                                                        <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-2.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Jonathan Madano</strong>
-                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
-                                                </p>
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Jonathan Madano</strong>
+                                                        <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
+                                                        </p>
 
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-3.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Stella Johnson</strong>
-                                                <p> Alex will explain you how ... <span class="time-ago"> 3 h
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Stella Johnson</strong>
+                                                        <p> Alex will explain you how ... <span class="time-ago"> 3 h
                                                             </span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-1.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Alex Dolgove</strong>
-                                                <p> Alia just joined Messenger! <span class="time-ago"> 3 h
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Alex Dolgove</strong>
+                                                        <p> Alia just joined Messenger! <span class="time-ago"> 3 h
                                                             </span></p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-4.jpg" alt="">
                                                     </span>
-                                            <div class="notification-text notification-msg-text">
-                                                <strong>Adrian Mohani</strong>
-                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
+                                                    <div class="notification-text notification-msg-text">
+                                                        <strong>Adrian Mohani</strong>
+                                                        <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span>
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
 
-                            </div>
-                            <div class="dropdown-notifications-footer">
-                                <a href="#"> See all in Messages</a>
-                            </div>
-
-
-                        </div>
+                                    </div>
+                                    <div class="dropdown-notifications-footer">
+                                        <a href="#"> See all in Messages</a>
+                                    </div>
 
 
-                        <!-- notificiation icon  -->
-                        <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                            <img src="assets/images/icons/bell.svg" alt=""> <span>3</span>
-                        </a>
-
-
-                        <!-- notificiation dropdown -->
-                        <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                             class="dropdown-notifications display-hidden">
-
-                            <!-- notification contents -->
-                            <div class="dropdown-notifications-content" data-simplebar>
-
-                                <!-- notivication header -->
-                                <div class="dropdown-notifications-headline">
-                                    <h4>Notifications </h4>
-                                    <a href="#">
-                                        <i class="icon-feather-settings"
-                                           uk-tooltip="title: Notifications settings ; pos: left"></i>
-                                    </a>
                                 </div>
+                                <!-- notificiation icon  -->
+                                <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
+                                    <img src="/static/images/icons/bell.svg" alt=""> <span>3</span>
+                                </a>
+                                <!-- notificiation dropdown -->
+                                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                                     class="dropdown-notifications display-hidden">
 
-                                <!-- notiviation list -->
-                                <ul>
-                                    <li>
-                                        <a href="#">
+                                    <!-- notification contents -->
+                                    <div class="dropdown-notifications-content" data-simplebar>
+
+                                        <!-- notivication header -->
+                                        <div class="dropdown-notifications-headline">
+                                            <h4>Notifications </h4>
+                                            <a href="#">
+                                                <i class="icon-feather-settings"
+                                                   uk-tooltip="title: Notifications settings ; pos: left"></i>
+                                            </a>
+                                        </div>
+
+                                        <!-- notiviation list -->
+                                        <ul>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-2.jpg" alt="">
                                                     </span>
-                                            <span class="notification-icon bg-gradient-primary">
+                                                    <span class="notification-icon bg-gradient-primary">
                                                         <i class="icon-feather-thumbs-up"></i></span>
-                                            <span class="notification-text">
+                                                    <span class="notification-text">
                                                         <strong>Adrian Moh.</strong> Like Your Comment On Video
                                                         <span class="text-primary">Learn Prototype Faster</span>
                                                         <br> <span class="time-ago"> 9 hours ago </span>
                                                     </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-3.jpg" alt="">
                                                     </span>
-                                            <span class="notification-icon bg-gradient-danger">
+                                                    <span class="notification-icon bg-gradient-danger">
                                                         <i class="icon-feather-star"></i></span>
-                                            <span class="notification-text">
+                                                    <span class="notification-text">
                                                         <strong>Alex Dolgove</strong> Added New Review In Video
                                                         <span class="text-primary">Full Stack PHP Developer</span>
                                                         <br> <span class="time-ago"> 19 hours ago </span>
                                                     </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-4.jpg" alt="">
                                                     </span>
-                                            <span class="notification-icon bg-gradient-success">
+                                                    <span class="notification-icon bg-gradient-success">
                                                         <i class="icon-feather-message-circle"></i></span>
-                                            <span class="notification-text">
+                                                    <span class="notification-text">
                                                         <strong>Stella John</strong> Replay Your Comment in
                                                         <span class="text-primary">Adobe XD Tutorial</span>
                                                         <br> <span class="time-ago"> 12 hours ago </span>
                                                     </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-2.jpg" alt="">
                                                     </span>
-                                            <span class="notification-icon bg-gradient-primary">
+                                                    <span class="notification-icon bg-gradient-primary">
                                                         <i class="icon-feather-thumbs-up"></i></span>
-                                            <span class="notification-text">
+                                                    <span class="notification-text">
                                                         <strong>Adrian Moh.</strong> Like Your Comment On Video
                                                         <span class="text-primary">Learn Prototype Faster</span>
                                                         <br> <span class="time-ago"> 9 hours ago </span>
                                                     </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-3.jpg" alt="">
                                                     </span>
-                                            <span class="notification-icon bg-gradient-warning">
+                                                    <span class="notification-icon bg-gradient-warning">
                                                         <i class="icon-feather-star"></i></span>
-                                            <span class="notification-text">
+                                                    <span class="notification-text">
                                                         <strong>Alex Dolgove</strong> Added New Review In Video
                                                         <span class="text-primary">Full Stack PHP Developer</span>
                                                         <br> <span class="time-ago"> 19 hours ago </span>
                                                     </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
                                                     <span class="notification-avatar">
-                                                        <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                                        <img src="/static/images/avatars/avatar-4.jpg" alt="">
                                                     </span>
-                                            <span class="notification-icon bg-gradient-success">
+                                                    <span class="notification-icon bg-gradient-success">
                                                         <i class="icon-feather-message-circle"></i></span>
-                                            <span class="notification-text">
+                                                    <span class="notification-text">
                                                         <strong>Stella John</strong> Replay Your Comment in
                                                         <span class="text-primary">Adobe XD Tutorial</span>
                                                         <br> <span class="time-ago"> 12 hours ago </span>
                                                     </span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                                </a>
+                                            </li>
+                                        </ul>
 
-                            </div>
-
-
-                        </div>
-
-
-                        <!-- profile -image -->
-                        <a class="opts_account" href="#"> <img src="assets/images/avatars/avatar-2.jpg" alt=""></a>
-
-                        <!-- profile dropdown-->
-                        <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                             class="dropdown-notifications rounded display-hidden">
-
-                            <!-- User Name / Avatar -->
-                            <!-- User Name / Avatar -->
-                            <a href="timeline.html">
-
-                                <div class="dropdown-user-details">
-
-                                    <div class="dropdown-user-cover">
-                                        <img src="assets/images/avatars/profile-cover.jpg" alt="">
                                     </div>
-                                    <div class="dropdown-user-avatar">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                    </div>
-                                    <div class="dropdown-user-name"> James Lewis</div>
+
+
                                 </div>
 
-                            </a>
+                                <!-- profile -image -->
+                                <a class="opts_account" href="#"> <img src="/media/{{ request.user.avatar }}" alt=""></a>
 
-                            <ul class="dropdown-user-menu">
-                                <li><a href="#"> <i class="fas fa-rocket"></i> Boost Posts </a></li>
-                                <li><a href="#"> <i class="fas fa-rocket"></i> Boost Pages </a></li>
-                                <li><a href="#"> <i class="fas fa-bullhorn"></i> Advertising </a></li>
-                                <li><a href="#"> <i class="fas fa-user-edit"></i> General Settings</a></li>
-                                <li><a href="#"> <i class="fas fa-user-cog"></i> Admi Area</a></li>
-                                <li>
-                                    <a href="#" id="night-mode" class="btn-night-mode">
-                                        <i class="fas fa-moon"></i> Night mode
-                                        <span class="btn-night-mode-switch">
-                                                    <span class="uk-switch-button"></span>
-                                                </span>
+                                <!-- profile dropdown-->
+                                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                                     class="dropdown-notifications rounded display-hidden">
+
+                                    <!-- User Name / Avatar -->
+                                    <!-- User Name / Avatar -->
+                                    <a href="timeline.html">
+
+                                        <div class="dropdown-user-details">
+
+                                            <div class="dropdown-user-cover">
+                                            </div>
+                                            <div class="dropdown-user-avatar">
+                                                <img src="/media/{{ request.user.avatar }}" alt="">
+                                            </div>
+                                            <div class="dropdown-user-name">{{ request.user.nickname }}</div>
+                                        </div>
+
                                     </a>
-                                </li>
-                                </li>
-                                <li><a href="form-login.html"> <i class="fas fa-sign-out-alt"></i>Log Out</a>
-                                </li>
-                            </ul>
 
-                            <hr class="m-0">
-                            <ul class="dropdown-user-menu">
-                                <li><a href="page-setting.html" class="bg-secondery"> <i class="uil-bolt"></i>
-                                    <div> Upgrade To Premium <span> Pro features give you complete control
-                                                    </span>
+                                    <ul class="dropdown-user-menu">
+                                        <li><a href="#"> <svg style="margin-right: 15px;" t="1615892625179" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="9542" width="32" height="32"><path d="M0 0m330.1376 0l363.7248 0q330.1376 0 330.1376 330.1376l0 363.7248q0 330.1376-330.1376 330.1376l-363.7248 0q-330.1376 0-330.1376-330.1376l0-363.7248q0-330.1376 330.1376-330.1376Z" fill="#1c3faa" p-id="9543" data-spm-anchor-id="a313x.7781069.0.i13" class=""></path><path d="M693.8624 51.2A279.2448 279.2448 0 0 1 972.8 330.1376v363.7248A279.2448 279.2448 0 0 1 693.8624 972.8H330.1376A279.2448 279.2448 0 0 1 51.2 693.8624V330.1376A279.2448 279.2448 0 0 1 330.1376 51.2h363.7248m0-51.2H330.1376A330.0352 330.0352 0 0 0 0 330.1376v363.7248A330.0352 330.0352 0 0 0 330.1376 1024h363.7248A330.0352 330.0352 0 0 0 1024 693.8624V330.1376A330.0352 330.0352 0 0 0 693.8624 0z" p-id="9544" data-spm-anchor-id="a313x.7781069.0.i14" class="" fill="#ffffff"></path><path d="M514.6624 325.9392m-195.4816 0a195.4816 195.4816 0 1 0 390.9632 0 195.4816 195.4816 0 1 0-390.9632 0Z" fill="#ffffff" p-id="9545" data-spm-anchor-id="a313x.7781069.0.i18" class="selected"></path><path d="M514.6624 151.04a175.0016 175.0016 0 1 1-175.0016 174.8992 175.104 175.104 0 0 1 175.0016-174.8992m0-20.48a195.4816 195.4816 0 1 0 195.3792 195.3792 195.4816 195.4816 0 0 0-195.3792-195.3792z" p-id="9546" data-spm-anchor-id="a313x.7781069.0.i21" class="" fill="#ffffff"></path><path d="M783.5648 868.864a10.24 10.24 0 0 1-10.24-10.24c0-156.9792-116.0192-284.672-258.6624-284.672S256 701.6448 256 858.624a10.24 10.24 0 0 1-20.48 0c0-168.2432 125.2352-305.152 279.2448-305.152s279.1424 136.9088 279.1424 305.152a10.24 10.24 0 0 1-10.3424 10.24z" p-id="9547" data-spm-anchor-id="a313x.7781069.0.i19" class="" fill="#ffffff"></path></svg> 个人中心 </a></li>
+                                        <li><a href="#"> <svg style="margin-right: 15px;" t="1615892827628" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10524" width="32" height="32"><path d="M119.466667 921.6a392.533333 34.133333 0 1 0 785.066666 0 392.533333 34.133333 0 1 0-785.066666 0Z" fill="#DAE9FF" p-id="10525"></path><path d="M972.8 727.04H571.733333V551.253333H271.36V151.893333h460.8v100.693334H972.8l-100.693333 199.68L972.8 727.04zM221.866667 938.666667c-27.306667 0-49.493333-22.186667-49.493334-49.493334V151.893333C170.666667 124.586667 192.853333 102.4 221.866667 102.4c27.306667 0 49.493333 22.186667 49.493333 49.493333v737.28c0 27.306667-22.186667 49.493333-49.493333 49.493334z" fill="#DAE9FF" p-id="10526"></path><path d="M901.12 725.333333H554.666667v-81.92H206.506667V138.24h467.626666v102.4h226.986667L802.133333 443.733333l98.986667 281.6zM153.6 921.6c-29.013333 0-52.906667-22.186667-52.906667-49.493333V134.826667C100.693333 107.52 124.586667 85.333333 153.6 85.333333c29.013333 0 52.906667 22.186667 52.906667 49.493334V870.4c0 29.013333-23.893333 51.2-52.906667 51.2z" fill="#1c3faa" p-id="10527" data-spm-anchor-id="a313x.7781069.0.i39" class=""></path><path d="M225.28 155.306667h35.84v498.346666h-35.84z" fill="#2064FF" p-id="10528" data-spm-anchor-id="a313x.7781069.0.i41" class="selected"></path><path d="M373.76 448.853333h64.853333V409.6h-64.853333c-17.066667 0-25.6-13.653333-25.6-27.306667s8.533333-22.186667 25.6-22.186666h46.08s-34.133333-58.026667-46.08-80.213334c-11.946667-29.013333 37.546667-40.96 49.493333-17.066666 13.653333 25.6 39.253333 78.506667 39.253334 78.506666s22.186667-58.026667 35.84-87.04c11.946667-27.306667 59.733333 5.12 46.08 34.133334-11.946667 23.893333-37.546667 69.973333-37.546667 69.973333h46.08c17.066667 0 23.893333 6.826667 23.893333 22.186667s-6.826667 27.306667-23.893333 27.306666h-64.853333v37.546667h64.853333c17.066667 0 25.6 6.826667 25.6 22.186667 0 13.653333-8.533333 25.6-25.6 25.6h-64.853333v5.12c0 32.426667-8.533333 47.786667-25.6 47.786666H443.733333c-8.533333 0-6.826667-27.306667-6.826666-47.786666V494.933333h-64.853334c-17.066667 0-25.6-10.24-25.6-25.6 1.706667-13.653333 10.24-20.48 27.306667-20.48z" fill="#DAE9FF" p-id="10529"></path><path d="M356.693333 448.853333h64.853334V409.6h-64.853334c-17.066667 0-25.6-13.653333-25.6-27.306667s8.533333-22.186667 25.6-22.186666h46.08l-34.133333-68.266667c-11.946667-29.013333 25.6-51.2 39.253333-29.013333 13.653333 25.6 39.253333 78.506667 39.253334 78.506666s29.013333-56.32 42.666666-85.333333c11.946667-27.306667 51.2 3.413333 37.546667 34.133333-11.946667 23.893333-37.546667 71.68-37.546667 71.68h46.08c17.066667 0 25.6 6.826667 25.6 22.186667s-8.533333 27.306667-25.6 27.306667h-64.853333v39.253333h64.853333c17.066667 0 25.6 6.826667 25.6 22.186667 0 13.653333-8.533333 25.6-25.6 25.6h-64.853333v5.12c0 32.426667-8.533333 47.786667-25.6 47.786666s-25.6-15.36-25.6-47.786666V494.933333h-64.853333c-17.066667 0-25.6-10.24-25.6-25.6 0-13.653333 10.24-20.48 27.306666-20.48z" fill="#FFFFFF" p-id="10530"></path></svg> 我的活动 </a></li>
+                                        <li><a href="#"> <svg style="margin-right: 15px;" t="1615892869670" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11136" width="32" height="32"><path d="M736.9 892.6c-10.9 0-21.8-2.6-31.9-7.9L510.7 782.5 316.4 884.7c-23.3 12.2-50.9 10.1-72.1-5.2-21.2-15.4-31.6-41-27.2-66.9l37.1-216.4L97.1 443.1c-18.8-18.3-25.4-45.2-17.3-70.1 8.1-24.9 29.3-42.8 55.2-46.6l217.2-31.6L449.3 98c11.6-23.5 35.1-38.2 61.4-38.2 26.2 0 49.7 14.6 61.3 38.1l97.1 196.8 217.2 31.5c26 3.8 47.2 21.7 55.2 46.6 8.1 24.9 1.5 51.8-17.3 70.1L767.1 596.3l37.1 216.4c4.4 25.8-6 51.5-27.2 66.9-12 8.6-26.1 13-40.1 13zM166.8 401.2L313 543.7c16.2 15.7 23.5 38.5 19.7 60.6l-34.5 201.2 180.7-95c20-10.5 43.7-10.5 63.6-0.1l180.7 95-34.5-201.2c-3.9-22.2 3.5-44.8 19.6-60.6l146.2-142.5-202-29.3c-22.3-3.3-41.6-17.3-51.5-37.5l-90.3-183-90.3 183.1c-9.9 20.2-29.2 34.2-51.5 37.4l-202.1 29.4z m334.7-268.4z" fill="#1c3faa" p-id="11137" data-spm-anchor-id="a313x.7781069.0.i46" class=""></path><path d="M371.5 489.3c-19.2 0-36-14.1-38.9-33.7-3.1-21.5 11.8-41.4 33.3-44.6l75.4-11 33.7-68.4c9.6-19.5 33.2-27.5 52.7-17.9 19.5 9.6 27.5 33.2 17.9 52.7l-40.2 81.4c-7.4 15.1-21.8 25.6-38.5 27.9l-89.7 13.1c-2 0.3-3.8 0.5-5.7 0.5z" fill="#1296db" p-id="11138" data-spm-anchor-id="a313x.7781069.0.i47" class=""></path></svg> 我的收藏 </a></li>
+                                        <li><a href="javascript:logout();"> <svg style="margin-right: 15px;" t="1615892920207" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12160" data-spm-anchor-id="a313x.7781069.0.i57" width="32" height="32"><path d="M113.5104 136.1408h234.5984v749.4656H113.5104z" fill="#DCEDFF" p-id="12161"></path><path d="M569.8048 919.9616h-443.392c-25.3952 0-46.08-20.6848-46.08-46.08V152.064c0-25.3952 20.6848-46.08 46.08-46.08h443.392c25.3952 0 46.08 20.6848 46.08 46.08v189.3376h-51.2V157.184h-433.152v711.5776h433.152v-168.4992h51.2v173.6192c0 25.3952-20.6848 46.08-46.08 46.08z" fill="#1c3faa" p-id="12162" data-spm-anchor-id="a313x.7781069.0.i56" class=""></path><path d="M936.4992 495.2064l-160.4608-166.3488-36.864 35.5328 118.6304 122.9824H348.1088v51.2h511.5904l-120.8832 131.2256 37.6832 34.7136L936.96 530.3296c9.1136-9.984 8.96-25.3952-0.4608-35.1232z" fill="#1c3faa" p-id="12163" data-spm-anchor-id="a313x.7781069.0.i58" class=""></path></svg>退出登录</a>
+                                        </li>
+                                    </ul>
+
+                                    <hr class="m-0">
+                                </div>
+                            </div>
+                        {% else %}
+                            <!-- 用户下拉栏 -->
+                            <a class="opts_account" href="#"> <img src="/static/Forum//static/images/default.png" alt=""></a>
+
+                            <!-- profile dropdown-->
+                            <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                                 class="dropdown-notifications rounded-lg">
+
+                                <!-- 用户名 / 头像 -->
+                                <a href="#login-modal" uk-toggle>
+                                    <div class="dropdown-user-details">
+                                        <div class="dropdown-user-avatar">
+                                            <img src="/static/Forum//static/images/default.png" alt="">
+                                        </div>
+                                        <div class="dropdown-user-name"> 请登录</div>
                                     </div>
                                 </a>
-                                </li>
-                            </ul>
 
+                                <!-- User menu -->
+
+                                <ul class="dropdown-user-menu">
+                                    <li><a href="#login-modal" uk-toggle>
+                                        <svg t="1591001397512" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="13498" width="24" height="24">
+                                            <path d="M819.292 623.785c-40.844-40.844-88.387-72.547-140.151-94.102 69.587-51.392 114.809-133.97 114.809-226.921 0-155.467-126.483-281.951-281.951-281.951s-281.951 126.483-281.951 281.951c0 92.95 45.221 175.529 114.809 226.921-51.762 21.555-99.308 53.26-140.151 94.102-82.080 82.080-127.284 191.213-127.284 307.292 0 32.174 26.082 58.254 58.254 58.254s58.254-26.080 58.254-58.254c0-175.385 142.685-318.068 318.068-318.068 175.385 0 318.068 142.685 318.068 318.068 0 32.174 26.080 58.254 58.254 58.254s58.254-26.080 58.254-58.254c0-116.081-45.204-225.211-127.284-307.292zM512 137.32c91.225 0 165.442 74.218 165.442 165.442s-74.218 165.442-165.442 165.442-165.442-74.218-165.442-165.442 74.218-165.442 165.442-165.442z"
+                                                  p-id="13499"></path>
+                                        </svg>
+                                        <path d="M401.2 518.8C306.8 462.4 268.8 344.8 312 244c43.2-101.2 154.4-154.8 260.4-125.6 106 29.2 174 132.4 159.2 241.2-14.8 108.8-107.6 190-217.6 190-175.2 0-317.2 142-317.2 317.2 0 13.6-10.8 24.4-24.4 24.4-13.6 0-24.4-10.8-24.4-24.4 0-158.8 102.4-299.2 253.2-348z m112.8-18c94.4 0 170.8-76.4 170.8-170.8s-76.4-170.8-170.8-170.8-170.8 76.4-170.8 170.8 76.4 170.8 170.8 170.8z m366 366c0 13.6-10.8 24.4-24.4 24.4-13.6 0-24.4-10.8-24.4-24.4 0-89.2-37.6-174.4-103.6-234.8-10-9.2-10.8-24.4-1.6-34.4 9.2-10 24.4-10.8 34.4-1.6 76.4 69.6 119.6 168 119.6 270.8z m0 0"
+                                              fill="#4b4b4b" p-id="11667"></path>
+                                        <path d="M855.6 897.2c-16.8 0-30.4-13.6-30.4-30.4 0-87.6-36.8-171.2-101.6-230-12.4-11.2-13.2-30.4-2-42.8 5.6-6 12.8-9.6 21.2-10 8-0.4 16 2.4 22 8 77.6 70.4 121.6 170.8 121.6 275.2-0.4 16.4-14 30-30.8 30zM744 596h-0.8c-4.8 0.4-9.6 2.4-12.8 6-6.8 7.6-6.4 19.2 1.2 26 67.2 61.2 106 148.4 105.6 239.2 0 10 8.4 18.4 18.4 18.4 10 0 18.4-8.4 18.4-18.4 0-101.2-42.8-198.4-117.6-266.4-3.6-3.2-8-4.8-12.4-4.8zM172.4 897.2c-16.8 0-30.4-13.6-30.4-30.4 0-157.6 98-296.8 245.6-350-88.8-60-123.6-176-81.2-275.6 44-103.2 159.2-158.8 267.6-128.8 108.4 30 178.8 136.4 163.6 247.6-15.2 111.2-111.2 195.2-223.6 195.2-171.6 0-311.2 139.6-311.2 311.2 0 17.2-13.6 30.8-30.4 30.8z m342-780.8c-83.6 0-162.8 49.6-196.8 129.6-41.6 98-4.4 212.8 86.8 267.2l11.2 6.8-12.4 4c-148.8 48.4-249.2 186-249.2 342.4 0 10 8.4 18.4 18.4 18.4s18.4-8.4 18.4-18.4c0-178.4 144.8-323.2 323.2-323.2 106.4 0 197.2-79.6 211.6-184.8C740 252.8 673.2 152 570.8 124c-18.8-4.8-37.6-7.6-56.4-7.6z m-0.4 390.4c-97.6 0-176.8-79.2-176.8-176.8 0-97.6 79.2-176.8 176.8-176.8 97.6 0 176.8 79.2 176.8 176.8 0 97.6-79.2 176.8-176.8 176.8z m0-341.6c-90.8 0-164.8 74-164.8 164.8s74 164.8 164.8 164.8 164.8-74 164.8-164.8-74-164.8-164.8-164.8z"
+                                              fill="#4b4b4b" p-id="11668"></path>
+                                        </svg>
+                                        <path d="M518.826667 588.8c-131.413333 0-238.933333-107.52-238.933334-238.933333s107.52-238.933333 238.933334-238.933334 238.933333 107.52 238.933333 238.933334-107.52 238.933333-238.933333 238.933333z m0-409.6c-93.866667 0-170.666667 76.8-170.666667 170.666667s76.8 170.666667 170.666667 170.666666 170.666667-76.8 170.666666-170.666666-76.8-170.666667-170.666666-170.666667z"
+                                              fill="#4b4b4b" p-id="1920"></path>
+                                        <path d="M112.64 913.066667h-6.826667c-18.773333-3.413333-30.72-22.186667-25.6-40.96 10.24-42.666667 25.6-85.333333 47.786667-122.88 80.213333-138.24 225.28-221.866667 384-221.866667 160.426667 0 303.786667 83.626667 384 221.866667 18.773333 34.133333 32.426667 68.266667 44.373333 104.106666 5.12 18.773333-5.12 37.546667-22.186666 42.666667-18.773333 5.12-37.546667-5.12-42.666667-22.186667-10.24-32.426667-22.186667-61.44-37.546667-90.453333-68.266667-117.76-189.44-187.733333-325.973333-187.733333s-257.706667 69.973333-325.973333 187.733333c-18.773333 30.72-32.426667 66.56-40.96 102.4-1.706667 17.066667-17.066667 27.306667-32.426667 27.306667z"
+                                              fill="#4b4b4b" p-id="1921"></path>
+                                        <path d="M911.36 537.6h-136.533333c-18.773333 0-34.133333-15.36-34.133334-34.133333s15.36-34.133333 34.133334-34.133334h136.533333c18.773333 0 34.133333 15.36 34.133333 34.133334s-15.36 34.133333-34.133333 34.133333zM911.36 435.2h-102.4c-18.773333 0-34.133333-15.36-34.133333-34.133333s15.36-34.133333 34.133333-34.133334h102.4c18.773333 0 34.133333 15.36 34.133333 34.133334s-15.36 34.133333-34.133333 34.133333zM911.36 640h-68.266667c-18.773333 0-34.133333-15.36-34.133333-34.133333s15.36-34.133333 34.133333-34.133334h68.266667c18.773333 0 34.133333 15.36 34.133333 34.133334s-15.36 34.133333-34.133333 34.133333z"
+                                              fill="#4b4b4b" p-id="1922"></path>
+                                        </svg>
+                                        &nbsp;&nbsp;登录 </a></li>
+                                    <li><a uk-toggle="target: #register-modal">
+                                        <svg t="1591001343951" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                             xmlns="http://www.w3.org/2000/svg" p-id="12622" width="24" height="24">
+                                            <path d="M722.6 645.295c17.497-26.999 9.793-63.072-17.206-80.567-21.997-14.255-45.104-26.406-69.045-36.377 69.66-51.387 114.937-134.006 114.937-227.013 0-155.467-126.483-281.951-281.951-281.951s-281.951 126.483-281.951 281.951c0 92.95 45.223 175.527 114.811 226.919-51.763 21.557-99.309 53.261-140.153 94.103-82.080 82.080-127.284 191.213-127.284 307.292 0 32.174 26.082 58.254 58.254 58.254s58.254-26.080 58.254-58.254c0-175.385 142.685-318.068 318.068-318.068 61.579 0 121.298 17.606 172.699 50.915 27.002 17.498 63.074 9.793 80.567-17.206zM469.334 135.897c91.225 0 165.442 74.218 165.442 165.442s-74.218 165.442-165.442 165.442c-91.225 0-165.442-74.217-165.442-165.442s74.218-165.442 165.442-165.442z"
+                                                  p-id="12623" fill="#4b4b4b"></path>
+                                            <path d="M926.63 743.197h-66.992v-66.992c0-32.174-26.080-58.254-58.254-58.254s-58.254 26.080-58.254 58.254v66.992h-66.992c-32.174 0-58.254 26.080-58.254 58.254s26.080 58.254 58.254 58.254h66.992v66.992c0 32.174 26.080 58.254 58.254 58.254s58.254-26.080 58.254-58.254v-66.992h66.992c32.174 0 58.254-26.080 58.254-58.254s-26.080-58.254-58.254-58.254z"
+                                                  p-id="12624" fill="#4b4b4b"></path>
+                                        </svg>
+                                        <path d="M736.9 892.6c-10.9 0-21.8-2.6-31.9-7.9L510.7 782.5 316.4 884.7c-23.3 12.2-50.9 10.1-72.1-5.2-21.2-15.4-31.6-41-27.2-66.9l37.1-216.4L97.1 443.1c-18.8-18.3-25.4-45.2-17.3-70.1 8.1-24.9 29.3-42.8 55.2-46.6l217.2-31.6L449.3 98c11.6-23.5 35.1-38.2 61.4-38.2 26.2 0 49.7 14.6 61.3 38.1l97.1 196.8 217.2 31.5c26 3.8 47.2 21.7 55.2 46.6 8.1 24.9 1.5 51.8-17.3 70.1L767.1 596.3l37.1 216.4c4.4 25.8-6 51.5-27.2 66.9-12 8.6-26.1 13-40.1 13zM166.8 401.2L313 543.7c16.2 15.7 23.5 38.5 19.7 60.6l-34.5 201.2 180.7-95c20-10.5 43.7-10.5 63.6-0.1l180.7 95-34.5-201.2c-3.9-22.2 3.5-44.8 19.6-60.6l146.2-142.5-202-29.3c-22.3-3.3-41.6-17.3-51.5-37.5l-90.3-183-90.3 183.1c-9.9 20.2-29.2 34.2-51.5 37.4l-202.1 29.4z m334.7-268.4z"
+                                              fill="#4b4b4b" p-id="3309"></path>
+                                        <path d="M371.5 489.3c-19.2 0-36-14.1-38.9-33.7-3.1-21.5 11.8-41.4 33.3-44.6l75.4-11 33.7-68.4c9.6-19.5 33.2-27.5 52.7-17.9 19.5 9.6 27.5 33.2 17.9 52.7l-40.2 81.4c-7.4 15.1-21.8 25.6-38.5 27.9l-89.7 13.1c-2 0.3-3.8 0.5-5.7 0.5z"
+                                              fill="#4b4b4b" p-id="3310"></path>
+                                        </svg>
+                                        &nbsp;&nbsp;注册 </a></li>
+                                </ul>
+                                <div id="login-modal" uk-sticky bg-close="false" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                        <h2 class="uk-modal-title text-center">登录</h2>
+                                        <button class="uk-modal-close-outside" type="button" uk-close></button>
+                                        <div class="card">
+                                            <form class="card-form">
+                                                <div class="input">
+                                                    <input type="text" class="input-field" id="login-username" value=""
+                                                           required/>
+                                                    <label class="input-label">用户名</label>
+                                                </div>
+                                                <div class="input">
+                                                    <input type="password" id="login-password" class="input-field"
+                                                           required/>
+                                                    <label class="input-label">密码</label>
+                                                </div>
+                                                <div class="action">
+                                                    <button type="button" class="custom-button login-button"
+                                                            id="login-btn">登录
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="register-modal" uk-sticky bg-close="false" uk-modal>
+                                    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                        <h2 class="uk-modal-title text-center">注册</h2>
+                                        <button class="uk-modal-close-outside" type="button" uk-close></button>
+                                        <div class="card">
+                                            <form class="card-form">
+                                                <div class="input">
+                                                    <input type="text" id="register-nickname" class="input-field"
+                                                           value="" required/>
+                                                    <label class="input-label">昵称</label>
+                                                </div>
+                                                <div class="input">
+                                                    <input type="text" id="register-username" class="input-field"
+                                                           value="" required/>
+                                                    <label class="input-label">用户名</label>
+                                                </div>
+                                                <div class="input">
+                                                    <input type="password" id="register-password" class="input-field"
+                                                           required/>
+                                                    <label class="input-label">密码</label>
+                                                </div>
+                                                <div class="input">
+                                                    <input type="password" id="register-repassword" class="input-field"
+                                                           required/>
+                                                    <label class="input-label">确认密码</label>
+                                                </div>
+                                                <div class="action">
+                                                    <button class="custom-button login-button" type="button"
+                                                            id="register-btn">注册
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                </div>
+        </div> <!-- / heaader-innr -->
+        </header>
+    </div>
+    {% block main %}
+    {% endblock %}
+</div>
+
+<!-- Chat sidebar -->
+<a class="chat-plus-btn" href="#sidebar-chat" uk-toggle>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
+    </svg>
+    <!--  Chat -->
+</a>
+<div id="sidebar-chat" class="sidebar-chat px-3" uk-offcanvas="flip: true; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <div class="sidebar-chat-head mb-2">
+
+            <div class="btn-actions">
+                <a href="#" uk-tooltip="title: Search ;offset:7"
+                   uk-toggle="target: .sidebar-chat-search; animation: uk-animation-slide-top-small">
+                    <i class="icon-feather-search"></i> </a>
+                <a href="#" uk-tooltip="title: settings ;offset:7"> <i class="icon-feather-settings"></i>
+                </a>
+                <a href="#"> <i class="uil-ellipsis-v"></i> </a>
+                <a href="#" class="uk-hidden@s">
+                    <button class="uk-offcanvas-close uk-close" type="button"
+                            uk-close></button>
+                </a>
+            </div>
+
+            <h2> Chats </h2>
+        </div>
+
+        <div class="sidebar-chat-search" hidden>
+            <input type="text" class="uk-input" placeholder="Search in Messages">
+            <span class="btn-close"
+                  uk-toggle="target: .sidebar-chat-search; animation: uk-animation-slide-top-small">
+                            <i class="icon-feather-x"></i> </span>
+        </div>
+
+        <ul class="uk-child-width-expand sidebar-chat-tabs" uk-tab>
+            <li class="uk-active"><a href="#">Users</a></li>
+            <li><a href="#">Groups</a></li>
+        </ul>
+
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-2.jpg" alt="">
+                    <span class="online-dot"></span></div>
+                <h5> James Lewis </h5>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-1.jpg" alt="">
+                    <span class="online-dot"></span></div>
+                <h5> Erica Jones </h5>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-7.jpg" alt="">
+                    <span class="offline-dot"></span></div>
+                <h5> Stella Johnson </h5>
+            </div>
+        </a>
+
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-5.jpg" alt="">
+                    <span class="offline-dot"></span></div>
+                <h5> Alex Dolgove </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-2.jpg" alt="">
+                    <span class="online-dot"></span></div>
+                <h5> James Lewis </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-4.jpg" alt="">
+                    <span class="online-dot"></span></div>
+                <h5> Erica Jones </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-3.jpg" alt="">
+                    <span class="offline-dot"></span></div>
+                <h5> Stella Johnson </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-5.jpg" alt="">
+                    <span class="offline-dot"></span></div>
+                <h5> Alex Dolgove </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-2.jpg" alt="">
+                    <span class="online-dot"></span></div>
+                <h5> James Lewis </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-4.jpg" alt="">
+                    <span class="online-dot"></span></div>
+                <h5> Erica Jones </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-3.jpg" alt="">
+                    <span class="offline-dot"></span></div>
+                <h5> Stella Johnson </h5>
+            </div>
+        </a>
+        <a href="#">
+            <div class="contact-list">
+                <div class="contact-list-media"><img src="/static/images/avatars/avatar-5.jpg" alt="">
+                    <span class="offline-dot"></span></div>
+                <h5> Alex Dolgove </h5>
+            </div>
+        </a>
+
+
+    </div>
+</div>
+
+
+<div class="story-pop uk-animation-slide-bottom-small">
+    <div class="story-side uk-width-1-4@s">
+
+
+        <div class="uk-flex uk-flex-between uk-flex-middle mb-2">
+            <h2 class="mb-0" style="font-weight: 700">All Story</h2>
+            <a href="#" class="text-primary"> Setting</a>
+        </div>
+
+        <div class="story-side-innr" data-simplebar>
+            <h4 class="mb-1"> Your Story</h4>
+            <ul class="story-side-list">
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-1.jpg" alt="">
                         </div>
+                        <div class="story-user-innr">
+                            <h5> Stella Johnson </h5>
+                            <p> Share a photo or video</p>
+                        </div>
+                        <div class="add-story-btn">
+                            <i class="uil-plus"></i>
+                        </div>
+                    </a>
+
+                </li>
+            </ul>
+
+            <div class="uk-flex uk-flex-between uk-flex-middle my-3">
+                <h4 class="m-0"> Friends Story</h4>
+                <a href="#" class="text-primary"> See all</a>
+            </div>
+            <ul class="story-side-list"
+                uk-switcher="connect: #story-slider-switcher ; animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium">
+
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-1.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> James Lewis </h5>
+                            <p><span class="story-count"> 2 new </span> <span class="story-time-ago"> 4hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-2.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Stella Johnson </h5>
+                            <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 1hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-4.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Erica Jones </h5>
+                            <p><span class="story-count"> 2 new </span> <span class="story-time-ago"> 3hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-7.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Adrian Mohani </h5>
+                            <p><span class="story-count"> 1 new </span> <span class="story-time-ago"> 4hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Alex Dolgove </h5>
+                            <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 7hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-1.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Stella Johnson </h5>
+                            <p><span class="story-count"> 2 new </span> <span class="story-time-ago"> 8hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-2.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Erica Jones </h5>
+                            <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 10hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="story-user-media">
+                            <img src="/static/images/avatars/avatar-5.jpg" alt="">
+                        </div>
+                        <div class="story-user-innr">
+                            <h5> Alex Dolgove </h5>
+                            <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 14hr
+                                                ago
+                                            </span></p>
+                        </div>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+    <div class="story-content">
+
+        <!-- close button-->
+        <span class="story-btn-close" uk-toggle="target: body ; cls: is-open"
+              uk-tooltip="title:Close story ; pos: left "></span>
+
+        <div class="story-content-innr">
+
+            <ul id="story-slider-switcher" class="uk-switcher">
+
+                <li>
+
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
+
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
+
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/post/img-1.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/avatars/avatar-lg-1.jpg" alt="">
+                                </div>
+                            </li>
+                        </ul>
 
 
                     </div>
 
-                </div> <!-- / heaader-innr -->
-            </header>
-        </div>
-    </div>
 
-    <!-- Chat sidebar -->
-    <a class="chat-plus-btn" href="#sidebar-chat" uk-toggle>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
-        </svg>
-        <!--  Chat -->
-    </a>
-    <div id="sidebar-chat" class="sidebar-chat px-3" uk-offcanvas="flip: true; overlay: true">
-        <div class="uk-offcanvas-bar">
+                </li>
 
-            <div class="sidebar-chat-head mb-2">
+                <li>
 
-                <div class="btn-actions">
-                    <a href="#" uk-tooltip="title: Search ;offset:7"
-                       uk-toggle="target: .sidebar-chat-search; animation: uk-animation-slide-top-small">
-                        <i class="icon-feather-search"></i> </a>
-                    <a href="#" uk-tooltip="title: settings ;offset:7"> <i class="icon-feather-settings"></i>
-                    </a>
-                    <a href="#"> <i class="uil-ellipsis-v"></i> </a>
-                    <a href="#" class="uk-hidden@s">
-                        <button class="uk-offcanvas-close uk-close" type="button"
-                                uk-close></button>
-                    </a>
-                </div>
+                    <!-- slider navigation -->
 
-                <h2> Chats </h2>
-            </div>
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
 
-            <div class="sidebar-chat-search" hidden>
-                <input type="text" class="uk-input" placeholder="Search in Messages">
-                <span class="btn-close"
-                      uk-toggle="target: .sidebar-chat-search; animation: uk-animation-slide-top-small">
-                            <i class="icon-feather-x"></i> </span>
-            </div>
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
 
-            <ul class="uk-child-width-expand sidebar-chat-tabs" uk-tab>
-                <li class="uk-active"><a href="#">Users</a></li>
-                <li><a href="#">Groups</a></li>
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image">
+                                    <img src="/static/images/post/img-3.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="story-slider-image">
+                                    <img src="/static/images/avatars/avatar-lg-3.jpg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="story-slider-image">
+                                    <img src="/static/images/avatars/avatar-lg-2.jpg" alt="">
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </li>
+
+                <li>
+
+                    <!-- slider navigation -->
+
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
+
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/avatars/avatar-lg-4.jpg" alt="">
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+                <li>
+
+                    <!-- slider navigation -->
+
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
+
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/avatars/avatar-lg-4.jpg" alt="">
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+                <li>
+
+                    <!-- slider navigation -->
+
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
+
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/avatars/avatar-lg-4.jpg" alt="">
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+                <li>
+
+                    <!-- slider navigation -->
+
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
+
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/avatars/avatar-lg-4.jpg" alt="">
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+                <li>
+
+                    <!-- slider navigation -->
+
+                    <a href="#" uk-switcher-item="previous"
+                       class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
+                    <a href="#" uk-switcher-item="next"
+                       class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
+
+                    <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                        <!-- navigation -->
+                        <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
+
+                        <!-- Story posted image -->
+                        <ul class="uk-slider-items uk-child-width-1-1 story-slider">
+                            <li>
+                                <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+                                    <img src="/static/images/avatars/avatar-lg-4.jpg" alt="">
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
             </ul>
 
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-2.jpg" alt="">
-                        <span class="online-dot"></span></div>
-                    <h5> James Lewis </h5>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-1.jpg" alt="">
-                        <span class="online-dot"></span></div>
-                    <h5> Erica Jones </h5>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-7.jpg" alt="">
-                        <span class="offline-dot"></span></div>
-                    <h5> Stella Johnson </h5>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-5.jpg" alt="">
-                        <span class="offline-dot"></span></div>
-                    <h5> Alex Dolgove </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-2.jpg" alt="">
-                        <span class="online-dot"></span></div>
-                    <h5> James Lewis </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-4.jpg" alt="">
-                        <span class="online-dot"></span></div>
-                    <h5> Erica Jones </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-3.jpg" alt="">
-                        <span class="offline-dot"></span></div>
-                    <h5> Stella Johnson </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-5.jpg" alt="">
-                        <span class="offline-dot"></span></div>
-                    <h5> Alex Dolgove </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-2.jpg" alt="">
-                        <span class="online-dot"></span></div>
-                    <h5> James Lewis </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-4.jpg" alt="">
-                        <span class="online-dot"></span></div>
-                    <h5> Erica Jones </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-3.jpg" alt="">
-                        <span class="offline-dot"></span></div>
-                    <h5> Stella Johnson </h5>
-                </div>
-            </a>
-            <a href="#">
-                <div class="contact-list">
-                    <div class="contact-list-media"><img src="assets/images/avatars/avatar-5.jpg" alt="">
-                        <span class="offline-dot"></span></div>
-                    <h5> Alex Dolgove </h5>
-                </div>
-            </a>
-
 
         </div>
+
+
     </div>
-
-
-    <div class="story-pop uk-animation-slide-bottom-small">
-        <div class="story-side uk-width-1-4@s">
-
-
-            <div class="uk-flex uk-flex-between uk-flex-middle mb-2">
-                <h2 class="mb-0" style="font-weight: 700">All Story</h2>
-                <a href="#" class="text-primary"> Setting</a>
-            </div>
-
-            <div class="story-side-innr" data-simplebar>
-                <h4 class="mb-1"> Your Story</h4>
-                <ul class="story-side-list">
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Stella Johnson </h5>
-                                <p> Share a photo or video</p>
-                            </div>
-                            <div class="add-story-btn">
-                                <i class="uil-plus"></i>
-                            </div>
-                        </a>
-
-                    </li>
-                </ul>
-
-                <div class="uk-flex uk-flex-between uk-flex-middle my-3">
-                    <h4 class="m-0"> Friends Story</h4>
-                    <a href="#" class="text-primary"> See all</a>
-                </div>
-                <ul class="story-side-list"
-                    uk-switcher="connect: #story-slider-switcher ; animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium">
-
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> James Lewis </h5>
-                                <p><span class="story-count"> 2 new </span> <span class="story-time-ago"> 4hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Stella Johnson </h5>
-                                <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 1hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-4.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Erica Jones </h5>
-                                <p><span class="story-count"> 2 new </span> <span class="story-time-ago"> 3hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-7.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Adrian Mohani </h5>
-                                <p><span class="story-count"> 1 new </span> <span class="story-time-ago"> 4hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Alex Dolgove </h5>
-                                <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 7hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Stella Johnson </h5>
-                                <p><span class="story-count"> 2 new </span> <span class="story-time-ago"> 8hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Erica Jones </h5>
-                                <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 10hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="story-user-media">
-                                <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                            </div>
-                            <div class="story-user-innr">
-                                <h5> Alex Dolgove </h5>
-                                <p><span class="story-count"> 3 new </span> <span class="story-time-ago"> 14hr
-                                                ago
-                                            </span></p>
-                            </div>
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-        <div class="story-content">
-
-            <!-- close button-->
-            <span class="story-btn-close" uk-toggle="target: body ; cls: is-open"
-                  uk-tooltip="title:Close story ; pos: left "></span>
-
-            <div class="story-content-innr">
-
-                <ul id="story-slider-switcher" class="uk-switcher">
-
-                    <li>
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/post/img-1.jpg" alt="">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-1.jpg" alt="">
-                                    </div>
-                                </li>
-                            </ul>
-
-
-                        </div>
-
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image">
-                                        <img src="assets/images/post/img-3.jpg" alt="">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="story-slider-image">
-                                        <img src="assets/images/avatars/avatar-lg-3.jpg" alt="">
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="story-slider-image">
-                                        <img src="assets/images/avatars/avatar-lg-2.jpg" alt="">
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                    <li>
-
-                        <!-- slider navigation -->
-
-                        <a href="#" uk-switcher-item="previous"
-                           class="uk-position-center-left-out uk-position-medium slidenav-prev"></a>
-                        <a href="#" uk-switcher-item="next"
-                           class="uk-position-center-right-out uk-position-medium slidenav-next"></a>
-
-                        <div class="uk-position-relative uk-visible-toggle" uk-slider>
-                            <!-- navigation -->
-                            <ul class="uk-slider-nav uk-dotnav story-slider-nav"></ul>
-
-                            <!-- Story posted image -->
-                            <ul class="uk-slider-items uk-child-width-1-1 story-slider">
-                                <li>
-                                    <div class="story-slider-image uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
-                                        <img src="assets/images/avatars/avatar-lg-4.jpg" alt="">
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-
-                    </li>
-
-                </ul>
-
-
-            </div>
-
-
-        </div>
-    </div>
+</div>
 
 
 </div>
@@ -1230,9 +1218,105 @@
 <!-- javaScripts
 ================================================== -->
 <script src="https://cdn.bootcdn.net/ajax/libs/uikit/3.2.2/js/uikit.min.js"></script>
-<script src="/static/js/simplebar.js"></script>
-
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/simplebar/3.1.3/simplebar.js"></script>
+<script src="{% static 'message/message.js' %}"></script>
+<script>
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}")
+        },
+    });
+</script>
+{% if not request.is_login %}
+    <script>
+        $('#login-btn').click(function () {
+            let username = $('#login-username').val();
+            let password = $('#login-password').val();
+            if (username === '' || password === '') {
+                $.message({
+                    'type': 'error',
+                    'message': '账号或密码不能为空！'
+                });
+                return null;
+            }
+            $.ajax({
+                url: "{% url 'app_user:api_login' %}",
+                type: 'POST',
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function (resp) {
+                    location.href = '{% url "app_html_route:base" %}';
+                    $.message({
+                        type: 'info',
+                        message: '欢迎回来!' + {{ request.user }}
+                    });
+                },
+                error: function (e) {
+                    // 后期根据返回的status来进行对应的提示
+                    $.message({
+                        type: 'error',
+                        message: e.responseJSON.msg
+                    });
+                },
+            })
+        });
+        $('#register-btn').click(function () {
+            let nickname = $('#register-nickname').val();
+            let username = $('#register-username').val();
+            let password = $('#register-password').val();
+            let re_password = $('#register-repassword').val();
+            if (password === '' || nickname === '' || username === '') {
+                $.message({
+                    type: 'error',
+                    message: '输入不能为空！'
+                });
+                return null;
+            } else if (password !== re_password) {
+                $.message({
+                    type: 'error',
+                    message: '两次输入的密码不一致！'
+                });
+                return null;
+            }
+            $.ajax({
+                url: "{% url 'app_user:api_register' %}",
+                type: 'POST',
+                data: {
+                    username: username,
+                    password: password,
+                    nickname: nickname
+                },
+                success: function (resp) {
+                    location.href = '{% url "app_html_route:base" %}';
+                    $.message({
+                        type: 'info',
+                        message: '注册成功！'
+                    });
+                },
+                error: function (e) {
+                    // 后期根据返回的status来进行对应的提示
+                    $.message({
+                        type: 'error',
+                        message: e.responseJSON.msg
+                    });
+                },
+            })
+        });
+    </script>
+{% else %}
+    <script>
+        function logout() {
+            $.removeCookie('Token', {path: '/'});
+            location.href = '{% url "app_html_route:base" %}';
+        }
+    </script>
+{% endif %}
+{% block js %}
+{% endblock %}
 
 </body>
-
 </html>

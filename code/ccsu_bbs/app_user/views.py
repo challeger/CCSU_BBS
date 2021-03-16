@@ -49,13 +49,16 @@ def register(request):
     :return:
     """
     username = request.POST.get('username')
-    passwd = request.POST.get('passwd')
+    passwd = request.POST.get('password')
     nickname = request.POST.get('nickname')
     try:
-        Member.objects.create_user(username, passwd, nickname)
+        member = Member.objects.create_user(username, passwd, nickname)
+        resp = SuccessResponse({'msg': f'注册用户 {nickname} 成功!'})
+        # 设置cookie,登录成功
+        resp.set_cookie('Token', member.token, 60 * 60 * 24)
+        return resp
     except ValueError as e:
         return ValueErrorResponse({'msg': str(e)})
-    return SuccessResponse({'msg': f'注册用户 {nickname} 成功!'})
 
 
 @require_POST

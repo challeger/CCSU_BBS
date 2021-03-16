@@ -20,15 +20,19 @@ class LoginMiddleware(MiddlewareMixin):
     """
     def process_request(self, request):
         token = request.COOKIES.get('Token')
-        if token:
-            try:
-                content = jwt.decode(token, key=JWT_KEY)
-                # 判断是否已经过期
-                if time() < content['exp']:
-                    request.user = Member.objects.get(username=content['data']['username'])
-            except (KeyError, jwt.exceptions.DecodeError):
-                # TODO 后期考虑加上日志
-                pass
-            except Member.DoesNotExist:
-                # TODO 后期考虑加上日志
-                pass
+        if not token:
+            request.is_login = False
+            return
+        try:
+            content = jwt.decode(token, key=JWT_KEY, algorithms=['HS256'])
+            # 判断是否已经过期
+            if time() < content['exp']:
+                request.user = Member.objects.get(username=content['data']['username'])
+                request.is_login = True
+        except (KeyError, jwt.exceptions.DecodeError) as e:
+            # TODO 后期考虑加上日志
+            print(e)
+            request.is_login = False
+        except Member.DoesNotExist:
+            # TODO 后期考虑加上日志
+            request.is_login = False
